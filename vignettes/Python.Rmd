@@ -1,0 +1,33 @@
+---
+title: "Setup and use with python"
+author: "David Hope"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Setup and use with python}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r, eval=F}
+install.packages("reticulate")
+reticulate::install_python()
+reticulate::install_miniconda()
+reticulate::virtualenv_create("myenv")
+```
+
+
+```{r}
+library(reticulate)
+use_virtualenv("myenv")
+
+
+```
+
