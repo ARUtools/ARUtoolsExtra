@@ -1,0 +1,4 @@
+PKG_CXXFLAGS = -Wall -O1 #-std=c++17 -g #-ansi or -std=c++11
+PKG_CXXFLAGS += -DRCPP_PARALLEL_USE_TBB=1
+PKG_CCFLAGS  = -O1 #-g
+PKG_LIBS += $(shell "${R_HOME}/bin${R_ARCH_BIN}/Rscript.exe" -e "RcppParallel::RcppParallelLibs()")
