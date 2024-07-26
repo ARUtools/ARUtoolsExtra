@@ -393,7 +393,6 @@ int loadWav(const char *filename, const char * outFilename,const char *jsonFilen
 
 pFileJSON = fopen(jsonFilename, "w");
 //
-    printf("Outputing json");
     FILE * pFile2;
     pFile2 = fopen(outFilename, "w");
     pFile = fopen(str2, "r");
