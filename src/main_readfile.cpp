@@ -1,4 +1,4 @@
-/* 
+/*
  * File:   main.cpp
  * Author: ags056
  *
@@ -52,7 +52,7 @@ void replaceExt(string& s, const string& newExt) {
 }
 
 
-// [[Rcpp::export]]
+
 int detect_wind_cpp(std::string input_file_directory, std::string output_directory,
                     std::string tree_locs,
                     int verbose = 0
@@ -68,7 +68,7 @@ int detect_wind_cpp(std::string input_file_directory, std::string output_directo
     std::string outjson = ".json";
     std::string wavext = ".wav";
 
-    
+
     // while ((opt = getopt(argc, argv, "i:o:v:h:")) != -1) {
     //     switch (opt) {
     //                     case 'h':{
@@ -85,14 +85,14 @@ int detect_wind_cpp(std::string input_file_directory, std::string output_directo
     //         case 'o':{
     //             outdir = optarg;
     //             break;}
-    //         
+    //
     //     }
     p = input_file_directory;
     outdir = output_directory;
-    
-  
+
+
     //     testForIO = 1;
-    // } 
+    // }
     // cout << outdir.c_str() << endl;
       if ( !std::filesystem::is_directory(outdir)) {
         printf("\nIncorrect or missing input parameters");
@@ -106,7 +106,7 @@ int detect_wind_cpp(std::string input_file_directory, std::string output_directo
     if (status==0)    {
         printf("\nError!");
         exit (EXIT_FAILURE);
-        
+
         }
 //        //printf("\nError!");
     // std::string p(argc <= 1 ? "." : argv[1]);
@@ -120,15 +120,15 @@ int detect_wind_cpp(std::string input_file_directory, std::string output_directo
     char *tr_char = new char [tree_locs.length()+1];
     std::strcpy(tr_char, tree_locs.c_str());
     // int rank, numprocs;
-    
+
 
   // Iterate through directory and create vector of file names, and output file names
 
   if (status == 1 )
-  {   
+  {
       std::vector<std::string> paths;
       std::vector<std::string> filenames;
-      std::vector<std::string> sites; 
+      std::vector<std::string> sites;
       std::ifstream pathlist(pathlistname);// "pathlist.txt");
       std::ifstream filenameslist(filelistname);
       std::ifstream sitelist(sitelistname);
@@ -138,13 +138,13 @@ int detect_wind_cpp(std::string input_file_directory, std::string output_directo
 		if(!pathlist) std::cout<<"Error opening pathlist file"<< std::endl;
 		if(!filenameslist) std::cout<<"Error opening filename file"<< std::endl;
 		if(!sitelist) std::cout<<"Error opening sitename file"<< std::endl;
-			
-       
+
+
 	   //std::cout<<"Error opening output file"<< std::endl;
-        
+
         return -1;
     }
-    
+
     // Read in paths, filenames and sites from files.
 	std::string str;
 	while(std::getline(pathlist, str))
@@ -153,7 +153,7 @@ int detect_wind_cpp(std::string input_file_directory, std::string output_directo
 		if(str.size() > 0)
         paths.push_back(str);
 	}
-	
+
 	while(std::getline(filenameslist, str))
 	{
 		// Line contains string of length > 0 then save it in vector
@@ -172,17 +172,17 @@ int detect_wind_cpp(std::string input_file_directory, std::string output_directo
     int z = sites.size();
 	int p = filenames.size();
     printf("Numbers of paths: %d, sites:  %d, and files: %d \n", k, z, p);
-   
+
 //     MPI_Init(&argc, &argv);
 //     MPI_Comm_rank(MPI_COMM_WORLD, &rank);
 // 	  MPI_Comm_size(MPI_COMM_WORLD, &numprocs);
-    
+
     // if(rank == 0)
     //     {
     //     //   printf("starting model %s out: %s\n",p.c_str(),outdir.c_str());
     //       printf("Running program with %d  processors\n", numprocs);
     //     }
-    
+
      int j = 0;
 
       while (j < k){
@@ -193,7 +193,7 @@ int detect_wind_cpp(std::string input_file_directory, std::string output_directo
 		// printf("file: %s\n", out_fname.c_str());
 		// printf("file: %s\n", json_fnames.c_str());
         // cout<< in_fname << "\t" << out_fname <<"\t" << json_fnames << endl;
-        loadWav(in_fname.c_str(), out_fname.c_str(),json_fnames.c_str(), trees, 
+        loadWav(in_fname.c_str(), out_fname.c_str(),json_fnames.c_str(), trees,
                   1, 43,25,verbose,tr_char);
 				  j+=1;
       }
@@ -203,5 +203,5 @@ int detect_wind_cpp(std::string input_file_directory, std::string output_directo
   // MPI_Finalize();
 
   return 0;
-  
+
 }

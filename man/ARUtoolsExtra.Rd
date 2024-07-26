@@ -12,3 +12,19 @@ interpretation, and prepare files for processing on the
 WildTrax <https://wildtrax.ca/> platform. Read and process metadata
 from recordings collected using the Song Meter and BAR-LT types of ARUs.
 }
+\seealso{
+Useful links:
+\itemize{
+  \item Report bugs at \url{https://github.com/ARUtools/ARUtoolsExtra/issues}
+}
+
+}
+\author{
+\strong{Maintainer}: David Hope \email{david.hope@ec.gc.ca} (\href{https://orcid.org/0000-0002-2140-4261}{ORCID})
+
+Other contributors:
+\itemize{
+  \item Government of Canada [copyright holder, funder]
+}
+
+}
