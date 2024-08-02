@@ -1,7 +1,7 @@
 Package: ARUtoolsExtra
 Type: Package
 Title: Expansions to ARUtools.
-Version: 0.1.0
+Version: 0.1.0.9000
 Authors@R: c(
     person("David", "Hope", , "david.hope@ec.gc.ca", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0002-2140-4261")),
@@ -19,7 +19,14 @@ Imports:
     exifr,
     glue,
     Rcpp,
+    RcppParallel,
     reticulate
 RoxygenNote: 7.3.1
 LinkingTo: 
-    Rcpp
+    Rcpp,
+    RcppParallel
+Suggests: 
+    knitr,
+    rmarkdown
+VignetteBuilder: knitr
+SystemRequirements: GNU make
