@@ -4,12 +4,14 @@
 \alias{detect_wind}
 \title{Detect wind in wave files.}
 \usage{
-detect_wind(input_file_directory, output_directory, quiet = T)
+detect_wind(input_file_directory, output_directory, parallel = F, quiet = T)
 }
 \arguments{
 \item{input_file_directory}{Path to directory of wind software files}
 
 \item{output_directory}{Path to directory to output files}
+
+\item{parallel}{Logical. Run in parallel}
 
 \item{quiet}{Logical to verbosely run}
 }

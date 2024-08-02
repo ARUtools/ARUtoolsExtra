@@ -65,3 +65,15 @@ detect_wind(input_file_directory = "./wind_files/",
             output_directory = "Path/to/outpu/",
             quiet = T)
 ```
+
+To run in parallel:
+
+``` r
+
+RcppParallel::defaultNumThreads() # Check number of threads available
+RcppParallel::setThreadOptions(numThreads = 8) 
+# Don't use all of available threads as R requires one.
+detect_wind(input_file_directory = "./wind_files/",
+            output_directory = "Path/to/outpu/",
+            quiet = T, parallel = T)
+```
