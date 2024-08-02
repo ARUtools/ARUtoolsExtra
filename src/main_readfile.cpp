@@ -26,6 +26,7 @@ THE SOFTWARE.
 
 //#include <cstdlib>
 #include "processInWindows.hpp"
+#include "parallelreadfile.hpp"
 #include <string>
 #include <iostream>
 #include <cstring>
@@ -52,9 +53,9 @@ void replaceExt(string& s, const string& newExt) {
 }
 
 
-
+// [[Rcpp::export]]
 int detect_wind_cpp(std::string input_file_directory, std::string output_directory,
-                    std::string tree_locs,
+                    std::string tree_locs, int parallel = 0,
                     int verbose = 0
                     ) {
   // int testForIO = 0;
@@ -69,31 +70,9 @@ int detect_wind_cpp(std::string input_file_directory, std::string output_directo
     std::string wavext = ".wav";
 
 
-    // while ((opt = getopt(argc, argv, "i:o:v:h:")) != -1) {
-    //     switch (opt) {
-    //                     case 'h':{
-    //             printf("\n mpirun windDet.exe -i wav_directory -o output_directory");
-    //             printf("\n-i and -o are required parameters, they provide the input directory holding .wav files and the output directory respectively. ");
-    //             break;}
-    //         case 'i':{
-    //             p = optarg;
-    //             //printf("\nInput file =%s", in_fname);
-    //             break;}
-    //             case 'v':{
-    //             verbose = atof(optarg);
-    //              break;}
-    //         case 'o':{
-    //             outdir = optarg;
-    //             break;}
-    //
-    //     }
     p = input_file_directory;
     outdir = output_directory;
 
-
-    //     testForIO = 1;
-    // }
-    // cout << outdir.c_str() << endl;
       if ( !std::filesystem::is_directory(outdir)) {
         printf("\nIncorrect or missing input parameters");
         printf("\nwindDet.exe -i wav_directory -o output_directory");
@@ -167,6 +146,7 @@ int detect_wind_cpp(std::string input_file_directory, std::string output_directo
         sites.push_back(str);
 	}
 
+	if (parallel == 0){
 
     int k = paths.size();
     int z = sites.size();
@@ -197,7 +177,13 @@ int detect_wind_cpp(std::string input_file_directory, std::string output_directo
                   1, 43,25,verbose,tr_char);
 				  j+=1;
       }
-  }
+	} else {
+	  loadWavparallel(paths,
+                   filenames,
+                  sites, verbose,
+                  wavext, outdir, outext, tree_locs);
+	}
+	}
   else cout << (std::filesystem::exists(p) ? "Found: " : "Not found: ") << p << '\n';
 
   // MPI_Finalize();

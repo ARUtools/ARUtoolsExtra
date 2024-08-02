@@ -1,0 +1,19 @@
+---
+title: "Extract WAMD data using python"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Extract WAMD data using python}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(ARUtoolsExtra)
+```

@@ -44,3 +44,12 @@ job::job({
                   output_directory ="D:/Merlin_data/wind/" ,
                   verbose = 1, tree_locs = glue::glue("{tree_locs_}/"))
 })
+
+
+
+
+RcppParallel::setThreadOptions(numThreads = 8)
+detect_wind(input_file_directory = "D:/Merlin_data/wind/barlt/",
+                output_directory ="D:/Merlin_data/wind/parallel/" ,quiet = T,
+                parallel = T)
+
