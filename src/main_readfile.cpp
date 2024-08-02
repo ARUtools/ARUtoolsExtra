@@ -95,9 +95,7 @@ int detect_wind_cpp(std::string input_file_directory, std::string output_directo
     std::string pathlistname = p + "pathlist.txt";
     std::string filelistname = p + "filelist.txt";
     std::string sitelistname = p + "sitelist.txt";
-    char *trees =(char *)"dectrees_10_5000";
-    char *tr_char = new char [tree_locs.length()+1];
-    std::strcpy(tr_char, tree_locs.c_str());
+
     // int rank, numprocs;
 
 
@@ -147,7 +145,9 @@ int detect_wind_cpp(std::string input_file_directory, std::string output_directo
 	}
 
 	if (parallel == 0){
-
+	  char *trees =(char *)"dectrees_10_5000";
+	  char *tr_char = new char [tree_locs.length()+1];
+	  std::strcpy(tr_char, tree_locs.c_str());
     int k = paths.size();
     int z = sites.size();
 	int p = filenames.size();

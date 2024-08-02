@@ -45,8 +45,12 @@ struct LoadWavP : public Worker
       std::string in_fname = paths.at(j)+  "/" + filenames.at(j) + wavext;//paths[j] + "/" +  filenames[j] + wavext;//
       std::string out_fname =  outdir +   sites.at(j)  + "__" +  filenames.at(j) + outext;
       std::string json_fnames =  outdir +  sites.at(j) + "__" + filenames.at(j) + ".json";
-
-      loadWav(in_fname.c_str(), out_fname.c_str(),json_fnames.c_str(), "dectrees_10_5000",
+      // std::printf("input: %s\toutput: %s\t json: %s\n", in_fname.c_str(),out_fname.c_str(),
+      //             json_fnames.c_str());
+      // std::printf("site: %s\tfilenames: %s\t paths: %s\n", sites.at(j).c_str(),filenames.at(j).c_str(),
+      //             paths.at(j).c_str());
+      char *trees =(char *)"dectrees_10_5000";
+      loadWav(in_fname.c_str(), out_fname.c_str(),json_fnames.c_str(),trees,
               1, 43,25,verbose,tr_char);
     }
   }
